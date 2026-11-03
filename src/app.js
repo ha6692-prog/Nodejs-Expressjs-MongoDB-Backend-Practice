@@ -3,10 +3,12 @@ import express from "express";
 import { errorMiddleware } from "./middlewares/error.middleware.js";
 import { ApiError } from "./utils/ApiError.js";
 import { ApiResponse } from "./utils/ApiResponse.js";
+import userRouter from "./routes/user.routes.js";
 
 const app = express();
 
 app.use(express.json());
+app.use("/api/v1/users", userRouter);
 
 app.get("/", (req, res) => {
   const response = new ApiResponse(
